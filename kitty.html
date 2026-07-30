@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion Ghibli Cat Mascot</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    /* Contenitore compatto stile Emoji/Mascotte */
+    .pet-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* Struttura del Gattino */
+    .cat {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      background: #332d3b; /* Nero/antracite morbido stile Jiji */
+      border-radius: 45px 45px 35px 35px;
+      box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Orecchie da gatto */
+    .ear {
+      position: absolute;
+      top: -14px;
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-bottom: 24px solid #332d3b;
+    }
+
+    .ear.left {
+      left: 6px;
+      transform: rotate(-12deg);
+      animation: earTwitchLeft 4s infinite;
+    }
+
+    .ear.right {
+      right: 6px;
+      transform: rotate(12deg);
+      animation: earTwitchRight 4s infinite;
+    }
+
+    /* Interno rosa orecchie */
+    .ear::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: -7px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 14px solid #f39eb2; /* Il tuo rosa! */
+    }
+
+    /* Occhi grandi stile Ghibli */
+    .eye {
+      position: absolute;
+      top: 28px;
+      width: 22px;
+      height: 26px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: blink 5s infinite;
+    }
+
+    .eye.left { left: 14px; }
+    .eye.right { right: 14px; }
+
+    /* Pupilla grande espressiva */
+    .pupil {
+      position: relative;
+      width: 14px;
+      height: 18px;
+      background: #222222;
+      border-radius: 50%;
+    }
+
+    /* Riflesso di luce negli occhi */
+    .pupil::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 5px;
+      height: 5px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+
+    /* Musetto e Nasino Rosa */
+    .nose {
+      position: absolute;
+      top: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 5px;
+      background: #f39eb2;
+      border-radius: 4px 4px 6px 6px;
+    }
+
+    /* Guanciotte Rosa Ghibli */
+    .blush {
+      position: absolute;
+      top: 48px;
+      width: 12px;
+      height: 6px;
+      background: #f39eb2;
+      opacity: 0.6;
+      border-radius: 50%;
+    }
+
+    .blush.left { left: 10px; }
+    .blush.right { right: 10px; }
+
+    /* Coda mobile */
+    .tail {
+      position: absolute;
+      bottom: 10px;
+      right: -20px;
+      width: 40px;
+      height: 12px;
+      background: #332d3b;
+      border-radius: 10px;
+      transform-origin: left center;
+      animation: wagTail 3s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    /* Fiocco Rosa al collo stile Kiki */
+    .bow {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 10px;
+      background: #f39eb2;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .bow::before, .bow::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      width: 12px;
+      height: 16px;
+      background: #f39eb2;
+      border-radius: 4px;
+    }
+
+    .bow::before { left: -10px; transform: rotate(-15deg); }
+    .bow::after { right: -10px; transform: rotate(15deg); }
+
+    /* --- ANIMAZIONI CSS --- */
+
+    /* Battito d'occhi */
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+
+    /* Movimento coda */
+    @keyframes wagTail {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(35deg); }
+    }
+
+    /* Scatto orecchie */
+    @keyframes earTwitchLeft {
+      0%, 80%, 100% { transform: rotate(-12deg); }
+      85% { transform: rotate(-22deg); }
+    }
+
+    @keyframes earTwitchRight {
+      0%, 70%, 100% { transform: rotate(12deg); }
+      75% { transform: rotate(22deg); }
+    }
+
+    /* Piccola oscillazione/fusa del corpo */
+    .cat {
+      animation: purr 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes purr {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-3px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pet-container">
+    <div class="cat">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      
+      <div class="eye left"><div class="pupil"></div></div>
+      <div class="eye right"><div class="pupil"></div></div>
+      
+      <div class="blush left"></div>
+      <div class="blush right"></div>
+      
+      <div class="nose"></div>
+      <div class="bow"></div>
+      <div class="tail"></div>
+    </div>
+  </div>
+
+</body>
+</html>
